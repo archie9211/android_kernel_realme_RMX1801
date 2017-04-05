@@ -116,8 +116,8 @@ __cc-option = $(call try-run,\
 # cc-option
 # Usage: cflags-y += $(call cc-option,-march=winchip-c6,-march=i586)
 
-cc-option = $(call __cc-option, $(CC),\
-	$(KBUILD_CPPFLAGS) $(KBUILD_CFLAGS),$(1),$(2))
+cc-option = $(call try-run,\
+	$(CC) -Werror $(KBUILD_CPPFLAGS) $(KBUILD_CFLAGS) $(1) -c -x c /dev/null -o "$$TMP",$(1),$(2))
 
 # cc-option-yn
 # Usage: flag := $(call cc-option-yn,-march=winchip-c6)

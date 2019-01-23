@@ -55,7 +55,10 @@
 		pinctrl-names = "i2c_active", "i2c_sleep";
 		pinctrl-0 = <&i2c_1_active>;
 		pinctrl-1 = <&i2c_1_sleep>;
-		status = "disabled";
+		//#ifdef VENDOR_EDIT
+		//Wanghao@BSP.group 2017-1-18 add for enable i2c_1
+		status = "okay";
+		//#endif
 	};
 
 	i2c_2: i2c@c176000 { /* BLSP1 QUP2 */
@@ -78,7 +81,8 @@
 		pinctrl-names = "i2c_active", "i2c_sleep";
 		pinctrl-0 = <&i2c_2_active>;
 		pinctrl-1 = <&i2c_2_sleep>;
-		status = "disabled";
+		//Jianchao,Shi@BSP.CHG.Basic, 2016/12/20 change disabled to okay
+		status = "okay";
 	};
 
 	i2c_3: i2c@c177000 { /* BLSP1 QUP3 */
@@ -121,9 +125,16 @@
 		clock-names = "iface_clk", "core_clk";
 		clocks = <&clock_gcc GCC_BLSP1_AHB_CLK>,
 			 <&clock_gcc GCC_BLSP1_QUP4_I2C_APPS_CLK>;
+		//#ifdef VENDOR_EDIT
+		/*xiang.fei@PSW.MM.AudioDriver.Machine, 2017/01/26,
+		 *Delete for audio config.
+		 */
+		/*
 		pinctrl-names = "i2c_active", "i2c_sleep";
 		pinctrl-0 = <&i2c_4_active>;
 		pinctrl-1 = <&i2c_4_sleep>;
+		*/
+		//#endif /* VENDOR_EDIT */
 		status = "disabled";
 	};
 
@@ -170,7 +181,10 @@
 		pinctrl-names = "i2c_active", "i2c_sleep";
 		pinctrl-0 = <&i2c_6_active>;
 		pinctrl-1 = <&i2c_6_sleep>;
-		status = "disabled";
+		//#ifdef VENDOR_EDIT
+		/*xiang.fei@PSW.MM.AudioDriver.Machine, 2017/01/26, Delete for audio config*/
+		//status = "disabled";
+		//#endif /* VENDOR_EDIT */
 	};
 
 	i2c_7: i2c@c1b7000 { /* BLSP2 QUP3 */
